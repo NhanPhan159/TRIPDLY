@@ -30,8 +30,12 @@ const Login = () => {
             const response =  await axios.post("http://127.0.0.1:4000/account/login",{ username, password },);
             setUser('');
             setPwd('');
+            const role = response.data.role
+            localStorage.setItem("isLogin","yes")
+            localStorage.setItem("role",role)
+
             if(response.status)
-                navigate("/home")
+                navigate(`/${role.toLowerCase()}`)
                 
         } catch (err:any) {
             if (!err?.response) {
