@@ -1,5 +1,7 @@
 import axios from 'axios';
 
-export default axios.create({
+const axiosInstance = axios.create({
     baseURL: 'http://localhost:4000'
 });
+axiosInstance.defaults.headers.common['Authorization'] = localStorage.getItem("accessToken");
+export default axiosInstance

@@ -1,14 +1,16 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { useAuthStore } from "../store/auth";
 
 type prop = {
     allowRole : [String]
 }
 
 const RequireAuth = ({allowRole}:prop) => {
-    const isLogin = Boolean(localStorage.getItem("isLogin"))
-    
-    const role = localStorage.getItem("role")
+    const isLogin = useAuthStore(state=>state.isLogin)
+    const role = useAuthStore(state=>state.role)
+
     const location = useLocation()
+    
     return ( 
         isLogin && allowRole.find((curr : any)=>role === curr)
         ?<Outlet/>
