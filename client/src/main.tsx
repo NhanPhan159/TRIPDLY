@@ -9,11 +9,16 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <BrowserRouter>
+  // <React.StrictMode>
+  //   <BrowserRouter>
+  //     <Routes>
+  //       <Route path="/*" element={<App/>} />
+  //     </Routes>
+  //   </BrowserRouter>
+  // </React.StrictMode>,
+      <BrowserRouter>
       <Routes>
         <Route path="/*" element={<App/>} />
       </Routes>
     </BrowserRouter>
-  </React.StrictMode>,
 )

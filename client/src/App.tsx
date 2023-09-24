@@ -12,6 +12,7 @@ import axiosInstance from "./api/axios"
 import { useAuthStore } from "./store/auth"
 
 function App() {
+  
   const navigate = useNavigate()
   const updateInfoAuth = useAuthStore(state=>state.updateInfoAuth)
   useEffect(() => {
