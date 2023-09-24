@@ -40,7 +40,7 @@ const Login = () => {
                 const role = response.data.role
                 updateInfoAuth(true,role)
                 localStorage.setItem("accessToken",token)
-                navigate('/home')
+                navigate(`/${role.toLowerCase()}`)
             }
         } catch (err:any) {
             if (!err?.response) {

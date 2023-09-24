@@ -1,7 +1,7 @@
 import Login from "./pages/login"
-import Visitor from "./pages/visitorPage"
-import Guide from "./pages/guide"
-import Admin from "./pages/admin"
+import Visitor from "./pages/visitor/visitorPage"
+import Guide from "./pages/guide/guide"
+import Admin from "./pages/admin/admin"
 import { Routes, Route, useNavigate } from "react-router-dom"
 import Layout from "./components/layout"
 import Unauth from "./pages/unauth"
@@ -27,11 +27,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout/>}>
           {/** public route */}
-          <Route path="home" element={<Home/>} />
-          <Route path="login" element={<Login/>} />
+          
+          <Route path="" element={<Home/>} />
           <Route path="unauth" element={<Unauth/>} />
         </Route>
-
+        <Route path="login" element={<Login/>} />
           {/** private route */}
           <Route element={<RequireAuth allowRole={["VISITOR"]}/>}>
             <Route path="visitor" element={<Visitor/>} />
