@@ -11,7 +11,7 @@ function Header() {
   const [theme, setTheme] = useState(localStorage.getItem('theme-link'));
   const themeLink = document.getElementById('theme-link');
   if (themeLink) {
-    themeLink.href = '/themes/lara-'+theme + '-indigo/theme.css';
+    themeLink.href = '/themes/lara-'+theme + '-blue/theme.css';
   }
   const changeMyTheme = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -26,7 +26,7 @@ function Header() {
   
   return (
     <> 
-    <nav className={`flex items-center justify-between flex-wrap p-5 ${theme === 'dark' ? ' bg-violet-950' : 'bg-sky-200'}`}>
+    <nav className={`flex items-center justify-between flex-wrap p-4  ${theme === 'dark' ? ' bg-violet-950' : 'bg-sky-200'}`}>
      
      
      <div className="block  lg:hidden">
