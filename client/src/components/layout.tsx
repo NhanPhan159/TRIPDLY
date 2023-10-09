@@ -1,24 +1,13 @@
 import { Outlet } from "react-router-dom";
-import CardTrip from "../pages/cardTrip";
-import Header from "./header"
+import GuestHeader from "./GuestHeader"
+import UserHeader from "./UserHeader";
+import { useAuthStore } from "../store/auth";
 const Layout = () => {
+    const isLogin = useAuthStore(state=>state.isLogin)
     return ( 
       <div>
-            
-            <Header/>
-            <div className="px-20 py-10">
-                <div className="flex justify-between">
-                    <div>
-                        <h1 className="text-xl">Trips</h1>
-                    </div>
-                </div>
-
-                <div className="grid grid-cols-3 gap-4 mt-7">
-                        <CardTrip></CardTrip>
-                        <CardTrip></CardTrip>
-                        <CardTrip></CardTrip>
-                </div>
-            </div>
+            {isLogin ? <UserHeader/> : <GuestHeader/>}
+            <Outlet/>
         </div>
      );
 }

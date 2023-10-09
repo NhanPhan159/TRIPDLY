@@ -2,9 +2,11 @@ import { useState,useRef } from 'react';
 import { Button } from 'primereact/button';
 import 'primeicons/primeicons.css';
 import { InputText } from 'primereact/inputtext';
+import { useAuthStore } from '../store/auth';
 
 
-function Header() {
+function GuestHeader() {
+  const updateInfoAuth = useAuthStore(state=>state.updateInfoAuth)
   const [isOpen, setIsOpen] = useState(false);
   const alert = useRef(null);
   const message = useRef(null);
@@ -64,10 +66,11 @@ function Header() {
             Sign up
           </a>
 
-          <a href='/login'>
-            <Button id="login" className="inline-flex items-center border-0 py-2 px-4" >Login
+          
+            <Button id="login" className="inline-flex items-center border-0 py-2 px-4" 
+              onClick={()=>updateInfoAuth(true,"")}
+              >Login
             </Button>
-          </a>
           &nbsp;&nbsp;&nbsp; 
 
           <Button className="inline-flex items-center border-0" onClick={() => changeMyTheme()}>
@@ -82,4 +85,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default GuestHeader;

@@ -1,11 +1,9 @@
-import Header from "../userHeader";
-
 const Visitor = () => {
-    return ( 
-        <>
-            <Header/> 
-        </>     
-    );
-}
- 
+  return (
+    <>
+      <div>hi abc</div>
+    </>
+  );
+};
+
 export default Visitor;
