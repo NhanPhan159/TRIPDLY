@@ -1,47 +1,37 @@
-import Login from "./pages/login"
-import Visitor from "./pages/visitorPage"
-import Guide from "./pages/guide"
-import Admin from "./pages/admin"
-import { Routes, Route, useNavigate } from "react-router-dom"
+import Trips from "./pages/trips/trips"
+import {createBrowserRouter,createRoutesFromElements,Route,RouterProvider} from "react-router-dom";
 import Layout from "./components/layout"
-import Unauth from "./pages/unauth"
-import RequireAuth from "./components/requireAuth"
-import Home from "./pages/home"
-import {useEffect} from 'react'
-import axiosInstance from "./api/axios"
-import { useAuthStore } from "./store/auth"
+import Feeds from "./pages/feeds/feeds"
+import NotFound from "./pages/NotFound";
 
 function App() {
-  const navigate = useNavigate()
-  const updateInfoAuth = useAuthStore(state=>state.updateInfoAuth)
-  useEffect(() => {
-    (async function anyNameFunction() {
-      const response = await axiosInstance("/account/role");
-      const role = response.data
-      updateInfoAuth(true,role)
-      navigate(`/${role.toLowerCase()}`)
-    })();
-  },[])
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route element={<Layout/>}>
+        {/** public route */}
+      
+        <Route index element={<Feeds/>} />
+        <Route 
+          path="trips/:id" 
+          element={<Trips/>}
+          loader={({params}:any)=>{
+            const trip = {
+              idTrip: params.id,
+              nameTrip: "Trip A"
+            }
+            return new Response(JSON.stringify(trip), {
+              status: 200,
+              headers: {
+                "Content-Type": "application/json; utf-8",
+              },
+            });
+          }} />
+        <Route path="/*" element={<NotFound/>} />
+      </Route>
+    )
+  );
   return (
-      <Routes>
-        <Route path="/" element={<Layout/>}>
-          {/** public route */}
-          <Route path="home" element={<Home/>} />
-          <Route path="login" element={<Login/>} />
-          <Route path="unauth" element={<Unauth/>} />
-        </Route>
-
-          {/** private route */}
-          <Route element={<RequireAuth allowRole={["VISITOR"]}/>}>
-            <Route path="visitor" element={<Visitor/>} />
-          </Route>
-          <Route element={<RequireAuth allowRole={["GUIDE"]}/>}>
-            <Route path="guide" element={<Guide/>} />
-          </Route>
-          <Route element={<RequireAuth allowRole={["ADMIN"]}/>}>
-            <Route path="admin" element={<Admin/>} />
-          </Route>
-      </Routes>
+    <RouterProvider router={router} />
   )
 }
 

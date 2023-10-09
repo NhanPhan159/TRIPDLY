@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "navbar-responsive.js"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
