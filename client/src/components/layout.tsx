@@ -5,10 +5,10 @@ import { useAuthStore } from "../store/auth";
 const Layout = () => {
     const isLogin = useAuthStore(state=>state.isLogin)
     return ( 
-      <div>
+      <div className="h-full">
             {isLogin ? <UserHeader/> : <GuestHeader/>}
             <Outlet/>
-        </div>
+      </div>
      );
 }
  

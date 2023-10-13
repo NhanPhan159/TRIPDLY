@@ -8,6 +8,13 @@ export default {
     extend: {
       colors:{
         "login":"#84B3ED"
+      },
+      spacing: {
+        '12/100': '12%',
+        "88/100": '87%'
+      },
+      fontFamily: {
+        'Poppins': ['Roboto Condensed', 'sans-serif']
       }
     },
   },
