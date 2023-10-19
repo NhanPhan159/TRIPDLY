@@ -27,7 +27,7 @@ function GuestHeader() {
   };
   
   return (
-    <> 
+    <div className='h-12/100'> 
     <nav className={`flex items-center justify-between flex-wrap p-4  ${theme === 'dark' ? ' bg-violet-950' : 'bg-sky-200'}`}>
      
      
@@ -81,7 +81,7 @@ function GuestHeader() {
      </div>
    </nav>
     
-    </>
+    </div>
   );
 }
 

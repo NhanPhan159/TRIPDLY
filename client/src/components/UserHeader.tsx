@@ -30,7 +30,7 @@ function UserHeader() {
 
   
   return (
-    <> 
+    <div className='h-12/100'> 
     <nav className={`flex items-center justify-between flex-wrap px-4 py-2 ${theme === 'dark' ? 'bg-[#2f3b50]' : 'bg-[#f4f4f4]'}`}>
      
      
@@ -129,7 +129,7 @@ function UserHeader() {
      </div>
    </nav>
     
-    </>
+    </div>
   );
 }
 
