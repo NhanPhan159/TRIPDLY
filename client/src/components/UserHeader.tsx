@@ -16,7 +16,7 @@ function UserHeader() {
   const themeLink = document.getElementById('theme-link');
 
   if (themeLink) {
-    themeLink.href = '/themes/lara-'+theme + '-indigo/theme.css';
+    themeLink.href = '/themes/lara-'+theme + '-blue/theme.css';
   }
 
   function switchTheme(){
@@ -24,7 +24,7 @@ function UserHeader() {
     setTheme(newTheme);
     localStorage.setItem('theme-link',newTheme)
     if (themeLink) {
-      themeLink.href = '/themes/bootstrap4-'+theme + '-blue/theme.css';
+      themeLink.href = '/themes/lara-'+theme + '-blue/theme.css';
     }
   }
 

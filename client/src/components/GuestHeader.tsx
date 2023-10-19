@@ -22,7 +22,7 @@ function GuestHeader() {
     const themeLink = document.getElementById('theme-link');
 
     if (themeLink) {
-      themeLink.href = '/themes/bootstrap4-'+theme + '-blue/theme.css';
+      themeLink.href = '/themes/lara-'+theme + '-blue/theme.css';
     }
   };
   
