@@ -1,31 +1,40 @@
 import { red } from '@mui/material/colors';
-import { TabView, TabPanel } from 'primereact/tabview';
 import {useState} from 'react'
+import { Avatar } from '@mui/material';
+import Note from './note';
+import { Tab,Tabs } from './TabsTrip';
+import {BsTelephone} from 'react-icons/bs'
+import {MdStarRate} from 'react-icons/md'
 const InforExtraTrip = () => {
-    const [userOrNote,setUserOrNOte] = useState(false)
     return ( 
-        <div>
-            <div>
-                <TabView pt={{
-                    navContainer: {className:'bg-red-500'}
-                }}>
-                <TabPanel header="Guide info">
-                    <p className="m-0">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                </TabPanel>
-                <TabPanel header="Note">
-                    <p className="m-0">
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, 
-                        eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo
-                        enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui 
-                        ratione voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.
-                    </p>
-                </TabPanel>
-            </TabView>
+        <div className='h-full'>
+            <div className='h-full'>
+                <Tabs>
+                    <Tab tabName="About host" active={false} displayName='Tab'>
+                        <div className='flex h-full items-center gap-16'>
+                            <div>
+                                <Avatar alt="Remy Sharp" src={'/src/assets/cary.jpg'} sx={{ width: 60, height: 60 }} />
+                                <p className='ml-2'>Henry</p>
+                            </div>
+                            <div>
+                                <div className='flex gap-3'>
+                                    <BsTelephone/>
+                                    <p>0908112233</p>
+                                </div>
+                                <div className='flex gap-3'>
+                                    <BsTelephone/>
+                                    <p>0908112233</p>
+                                </div><div className='flex gap-3'>
+                                    <MdStarRate/>
+                                    <p>0908112233</p>
+                                </div>
+                            </div>
+                        </div>
+                    </Tab>
+                    <Tab tabName="Key moments" active={false} displayName='Tab'>
+                        <Note></Note>
+                    </Tab>
+                </Tabs>
             </div>
         </div>
      );
