@@ -1,8 +1,11 @@
-import { useState } from "react";
+import {useState, ReactNode, ReactElement } from "react";
+type TabsProps = {
+  children : ReactElement<TabProps>[]
+}
 
-export function Tabs({ children :any }) {
+export function Tabs({ children }: TabsProps) {
   function findActiveTab(a:any) {
-    return a.reduce((accumulator:number, currentValue:any, i:any) => {
+    return a.reduce((accumulator:number, currentValue:ReactElement<TabProps>, i:any) => {
       if (currentValue.props.active) {
         return i;
       }
@@ -11,23 +14,26 @@ export function Tabs({ children :any }) {
     }, 0);
   }
 
-  function tabValidator(tab:any) {
-    return tab.type.displayName === "Tab" ? true : false;
+  function tabValidator(tab:ReactElement<TabProps>) {
+    return tab.props.displayName === "Tab" ? true : false;
   }
 
-  const [activeTab, setActiveTab] = useState(findActiveTab(children));
+  const [activeTab, setActiveTab] = useState<Number>(findActiveTab(children));
   return (
     <>
-      <div className="flex gap-2 justify-center bg-pink-500 p-2">
+      <div className="inline-flex gap-2 bg-[#2EBBF5] rounded-xl">
         {children.map((item, i) => {
           return (
             <>
               {tabValidator(item) && (
                 <Tab
-                  key={`tab-{i}`}
+                  key={`tab-${i}`}
                   currentTab={i}
                   activeTab={activeTab}
                   setActiveTab={setActiveTab}
+                  tabName={item.props.tabName}
+                  active={item.props.active}
+                  displayName="Tab"
                 >
                   {item.props.children}
                 </Tab>
@@ -36,11 +42,11 @@ export function Tabs({ children :any }) {
           );
         })}
       </div>
-      <div className="p-5">
+      <div className="p-5 h-[90%]">
         {children.map((item, i) => {
           return (
-            <div className={` ${i === activeTab ? "visible" : "hidden"}`}>
-              {item.props.component}
+            <div className={` ${i === activeTab ? "visible h-[90%]" : "hidden"}`}>
+              {item.props.children}
             </div>
           );
         })}
@@ -49,18 +55,25 @@ export function Tabs({ children :any }) {
   );
 }
 
-export function Tab({ children, activeTab, currentTab, setActiveTab }) {
+type TabProps = {
+  children?: ReactNode,
+  activeTab?: Number,
+  currentTab?: Number, 
+  tabName?: ReactNode,
+  active: boolean,
+  displayName: string,
+  setActiveTab?: (value: Number) => void
+}
+export function Tab(props:TabProps): ReactElement{
   return (
     <>
       <div
-        className={`px-5 py-3 rounded cursor-pointer
-      ${activeTab === currentTab ? "bg-white" : "bg-pink-400 text-white"}`}
-        onClick={() => setActiveTab(currentTab)}
+        className={`px-4 py-1 rounded cursor-pointer border-2 border-[#2EBBF5] font-medium
+      ${props.activeTab === props.currentTab ? "bg-white text-[#2EBBF5]" : "bg-[#2EBBF5] text-white"}`}
+        onClick={() => props.setActiveTab(props.currentTab)}
       >
-        {children}
+        {props.tabName}
       </div>
     </>
   );
 }
-
-Tab.displayName = "Tab";
