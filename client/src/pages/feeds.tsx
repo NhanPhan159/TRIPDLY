@@ -1,29 +1,24 @@
 import { useNavigate } from "react-router-dom";
-import LayoutHeader from "D:/tripdly2/TRIPDLY/client/src/components/LayoutHeader.tsx"
+import LayoutHeader from "../components/UserHeader"
 import Fullpage, { FullPageSections, FullpageSection } from '@ap.cx/react-fullpage'
+import PostItem from "../components/PostItem";
+import CalendarItem from "../components/CalendarItem";
 
 const Feeds = () => {
     const navi = useNavigate()
     return ( 
-        // <>
-        //   <Fullpage>
-        //     <FullPageSections>
-        //       <FullpageSection style={{
-        //         height: '100vh',
-        //         padding: '1em',
-        //       }}>1</FullpageSection>
-        //       <FullpageSection style={{
-        //         padding: '1em',
-        //       }}>2</FullpageSection>
-        //       <FullpageSection style={{
-        //         padding: '1em',
-        //       }}>3</FullpageSection>
-        //     </FullPageSections>
-        //   </Fullpage>
-        // </>
-        <div className="flex w-full h-full">
-          <div className="flex-1 bg-red-200">Image</div>
-          <div className="flex-1 bg-blue-200">Content</div>
+        <div className="flex w-full h-full bg-[#f4f4f4]">
+          <div className="w-1/5 h-full ">
+          </div>
+          <div className="w-3/5 h-full overflow-auto no-scrollbar ">
+            <PostItem/>
+            {/* <PostItem/>
+            <PostItem/>
+            <PostItem/> */}
+
+          </div>
+          <div className="w-1/5 h-full">
+          </div>
         </div>
      );
 }

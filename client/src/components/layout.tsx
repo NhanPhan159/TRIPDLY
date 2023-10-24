@@ -6,7 +6,8 @@ const Layout = () => {
     const isLogin = useAuthStore(state=>state.isLogin)
     return ( 
       <div className="h-full">
-            {isLogin ? <UserHeader/> : <GuestHeader/>}
+            {/* {isLogin ? <UserHeader/> : <GuestHeader/>} */}
+            <UserHeader/>
             <Outlet/>
       </div>
      );
