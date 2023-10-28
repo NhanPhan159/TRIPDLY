@@ -15,6 +15,22 @@ export default {
       },
       fontFamily: {
         'Poppins': ['Roboto Condensed', 'sans-serif']
+      },
+      animation: {
+        'moving-left': 'back_moving 1s ease infinite',
+        'moving-right': 'next_moving 1s ease infinite'
+      },
+      keyframes: {
+        back_moving: {
+          '0%': {transform: 'translateX(-30%)'},
+          '50%': { transform: "translateX(0)"},
+          '100%': {transform: 'translateX(-30%)'},
+        },
+        next_moving: {
+          '0%': {transform: 'translateX(30%)'},
+          '50%': { transform: "translateX(0)"},
+          '100%': {transform: 'translateX(30%)'},
+        }
       }
     },
   },
