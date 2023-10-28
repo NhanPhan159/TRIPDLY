@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import LayoutHeader from "../components/UserHeader"
-import Fullpage, { FullPageSections, FullpageSection } from '@ap.cx/react-fullpage'
 import PostItem from "../components/PostItem";
 import CalendarItem from "../components/CalendarItem";
 
@@ -12,12 +11,13 @@ const Feeds = () => {
           </div>
           <div className="w-3/5 h-full overflow-auto no-scrollbar ">
             <PostItem/>
-            {/* <PostItem/>
             <PostItem/>
-            <PostItem/> */}
+            <PostItem/>
+            <PostItem/>
 
           </div>
           <div className="w-1/5 h-full">
+            <CalendarItem/>
           </div>
         </div>
      );

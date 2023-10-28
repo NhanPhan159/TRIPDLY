@@ -7,6 +7,8 @@ import { useAuthStore } from '../store/auth';
 
 function GuestHeader() {
   const updateInfoAuth = useAuthStore(state=>state.updateInfoAuth)
+  const isLogin = useAuthStore(state=>state.isLogin)
+  const setLogin = useAuthStore(state=>state.updateInfoAuth)
   const [isOpen, setIsOpen] = useState(false);
   const alert = useRef(null);
   const message = useRef(null);
@@ -34,7 +36,7 @@ function GuestHeader() {
             <span className="text-2xl text-cyan-900 font-semibold">Tripdly</span>
             <div className="flex space-x-4 text-cyan-900 mix-blend-difference">
               
-              <a href="#">Log in</a>
+              <button onClick={()=>setLogin(!isLogin,"")}>Log in</button>
               <a href="#">Sign up</a>
             </div>
           </div>
