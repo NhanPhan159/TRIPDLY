@@ -3,10 +3,12 @@ import MessageBox from "../components/MessageBox";
 import MessageHeader from "../components/MessageHeader";
 import MessageTool from "../components/MessageTool";
 import InforTrip from "../components/InforTrip";
-import InforExtraTrip from "../components/InforExtraTrip";
+// import InforExtraTrip from "../components/InforExtraTrip";
+import UserInfo from "../components/UserInfor";
 //** UI component */
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import data from "../fakeData";
+import Note from "../components/note";
 
 type TripType = {
   idTrip: number;
@@ -18,6 +20,7 @@ type TripType = {
 //   };
 const Trips = () => {
   const trip = useLoaderData() as TripType;
+  const [isTrip,setisTrip] = useState(true)
   const dummy = useRef<HTMLDivElement>(null)
   useEffect(()=>{
     dummy.current?.scrollIntoView({ behavior: 'smooth' })
@@ -43,10 +46,17 @@ const Trips = () => {
       </div>
       <div className="h-full w-1/4 flex flex-col gap-2">
         <div className="flex-1 mb-4">
-          <InforTrip/>
+          {isTrip ?
+          (
+            <InforTrip func={setisTrip}/>
+          )
+          : (
+            <UserInfo func={setisTrip}/>
+          )
+        }
         </div>
         <div className="flex-1 bg-white shadow-xl rounded-2xl">
-          <InforExtraTrip/>
+          <Note/>
         </div>
       </div>
     </div>
