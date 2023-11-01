@@ -1,4 +1,5 @@
 import Trips from "./pages/trips";
+import User from "./pages/user";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -25,6 +26,21 @@ function App() {
               nameTrip: "Trip A",
             };
             return new Response(JSON.stringify(trip), {
+              status: 200,
+              headers: {
+                "Content-Type": "application/json; utf-8",
+              },
+            });
+          }}
+        />
+        <Route
+          path="/:username"
+          element={<User />}
+          loader={({ params }: any) => {
+            const user = {
+              username: params.username,
+            };
+            return new Response(JSON.stringify(user), {
               status: 200,
               headers: {
                 "Content-Type": "application/json; utf-8",

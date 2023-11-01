@@ -15,7 +15,7 @@ const UserInfo = ({func}:{func:(isTrip:boolean)=>void}) => {
                     opacity: "1"
                 }} width={300} height={190} />
             </div>
-            <div className="flex flex-0 justify-start gap-10 items-center px-10">
+            <div className="flex flex-col md:flex-0 justify-start gap-10 items-center px-10 ">
                 <div>
                     <Avatar alt="Remy Sharp" src={'/src/assets/cary.jpg'} sx={{ width: 60, height: 60 }} />
                     <p className='ml-2 text-[#6683C2] font-semibold'>Henry</p>
