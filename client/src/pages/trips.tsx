@@ -34,16 +34,13 @@ const Trips = () => {
   },[data])
 
   return (
-    <div className="flex px-2 h-88/100 w-full">
+    <div className="flex sm:px-2 h-88/100 w-full">
       <div className="bg-white h-full w-1/12">
-        {/* <div className="h-12 hover:bg-slate-600 text-black">Trip 1</div>
-        <div className="h-12 hover:bg-slate-600 text-black">Trip 2</div>
-        <div className="h-12 hover:bg-slate-600 text-black">Trip 3</div> */}
         <SideBar/>
       </div>
       { isLogin ?
         ( 
-          <div className="bg-[#F6F8FA] h-full w-4/5 mr-3 flex flex-col rounded-xl">    
+          <div className="bg-[#F6F8FA] h-full w-11/12 sm:w-4/5 sm:mr-3 flex flex-col rounded-xl">    
              <div className="flex-grow-0">
               <MessageHeader/>
             </div>
@@ -54,7 +51,7 @@ const Trips = () => {
               <MessageTool />
             </div></div>)
         : (
-          <BlockUI template={<Block/>} containerClassName="h-full w-4/5 mr-3 flex flex-col rounded-xl" blocked={true}>
+          <BlockUI template={<Block/>} containerClassName="h-full w-11/12 sm:w-4/5 sm:mr-3 flex flex-col rounded-xl" blocked={true}>
             <div className="blur-sm h-full w-full mr-3 flex flex-col rounded-xl">
               <div className="flex-grow-0">
                 <MessageHeader/>
@@ -69,8 +66,8 @@ const Trips = () => {
           </BlockUI>
         )
       }
-      <div className="h-full w-1/4 flex flex-col gap-2">
-        <div className="flex-1 mb-4">
+      <div className="h-full sm:flex hidden flex-col sm:gap-1 md:gap-2 sm:w-1/4">
+        <div className="flex-1 mb-4 sm:h-2/3">
           {isTrip ?
           (
             <InforTrip func={setisTrip}/>
@@ -80,7 +77,7 @@ const Trips = () => {
           )
         }
         </div>
-        <div className="flex-1 bg-white shadow-xl rounded-2xl">
+        <div className="flex-1 bg-white shadow-xl rounded-2xl sm:h-1/3">
           <Note/>
         </div>
       </div>

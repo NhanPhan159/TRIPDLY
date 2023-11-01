@@ -6,7 +6,7 @@ export default function Block() {
   const [signup,setSignup] = useState(true);
   return (
     signup?
-    <div className='w-1/3 h-auto bg-white rounded-xl '>
+    <div className='sm:w-3/4 lg:w-1/3 h-auto bg-white rounded-xl '>
       <p className='flex justify-center mt-5 text-4xl items-center text-cyan-900 font-semibold'>Tripdly</p>
       <p className='text-center p-2 text-sm'>Sign in to continue</p>
 
@@ -23,7 +23,7 @@ export default function Block() {
       </p>
     </div>
     :
-    <div className='w-1/3 h-auto bg-white rounded-xl '>
+    <div className='sm:w-3/5 lg:w-1/3 h-auto bg-white rounded-xl '>
       <button className='pi pi-angle-left p-2 mt-2 ' onClick={()=>setSignup(true)}></button>
       <p className='flex justify-center text-4xl items-center text-cyan-900 font-semibold'>Tripdly</p>
       <p className='text-center p-2 text-sm'>Sign up</p>
