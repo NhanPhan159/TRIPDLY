@@ -51,22 +51,22 @@ export default function TripStory() {
                     
                 </div>
                 <div>
-                    <p className='mt-2'
+                    <p className='mt-2 text-sm md:text-base'
                     onMouseEnter={handlePopoverOpen}
                     onMouseLeave={handlePopoverClose}>Name</p>
-                    <p className='text-sm text-slate-400'>July 26 2018, 01:03pm</p>
+                    <p className='text-xs md:text-sm text-slate-400  '>July 26 2018, 01:03pm</p>
                 </div>
             </div>
             <div className='mr-6 flex gap-3'>
                 <div onClick={()=>setJoin(!join)}>
                     {!join ?(
-                        <button className='px-5 py-1 rounded-full text-[#2c47a3] font-medium bg-[#C5F3FF]'>Join</button>
+                        <button className='px-5 py-1 rounded-full text-sm md:text-base text-[#2c47a3] font-medium bg-[#C5F3FF]'>Join</button>
                         )
-                        :<button className='px-5 py-1 rounded-full text-white font-medium bg-[#52c85c]'>You have requested</button>
+                        :<button className='px-5 py-1 rounded-full text-white text-sm md:text-base font-medium bg-[#52c85c]'>You have requested</button>
                         
                     }
                 </div>
-                <a target="_blank" rel="noopener noreferrer" href="/trips/1" className='px-5 py-1 rounded-full text-[#2c47a3] font-medium bg-[#C5F3FF]'>See more</a>
+                <a target="_blank" rel="noopener noreferrer" href="/trips/1" className='p-3 py-1 rounded-full text-sm md:text-base text-[#2c47a3] font-medium bg-[#C5F3FF]'>See more</a>
             </div>
         </div>
     </div>

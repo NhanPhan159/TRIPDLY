@@ -31,7 +31,12 @@ export default {
           '50%': { transform: "translateX(0)"},
           '100%': {transform: 'translateX(30%)'},
         }
+      },
+      maxWidth: {
+        '2/3': '66%',
+        '9/10': '90%',
       }
+
     },
   },
   plugins: [],
