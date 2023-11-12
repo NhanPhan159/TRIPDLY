@@ -1,5 +1,5 @@
 import Trips from "./pages/trips";
-import User from "./pages/user";
+import User, {userLoader} from "./pages/user";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -9,13 +9,14 @@ import {
 import Layout from "./components/layout";
 import Feeds from "./pages/feeds";
 import NotFound from "./pages/NotFound";
+import Login from "./pages/login";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route element={<Layout />}>
         {/** public route */}
-
+        <Route path="login" element={<Login/>}/>
         <Route index element={<Feeds />} />
         <Route
           path="trips/:id"
@@ -34,19 +35,11 @@ function App() {
           }}
         />
         <Route
-          path="/:username"
+          path="/user/:id"
           element={<User />}
-          loader={({ params }: any) => {
-            const user = {
-              username: params.username,
-            };
-            return new Response(JSON.stringify(user), {
-              status: 200,
-              headers: {
-                "Content-Type": "application/json; utf-8",
-              },
-            });
-          }}
+          loader={({params}:any) => {
+            return userLoader(params.id)}
+          }
         />
         <Route path="/*" element={<NotFound />} />
       </Route>

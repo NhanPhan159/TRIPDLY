@@ -1,6 +1,21 @@
 import React from 'react'
+import { useAuthStore } from '../store/auth'
 import TripStory from '../components/TripStory'
+import axios from 'axios';
+import { useLoaderData } from 'react-router-dom';
+
+export const userLoader = async (_id) => {
+    const res = await axios
+    .post("http://localhost:8888/user", { _id })
+    return res.data
+}
+
+
 export default function User() {
+    const userInfo = useLoaderData()
+    const ownerInfo = useAuthStore(state=>state.userInfo)
+    console.log("ownerinfo",ownerInfo);
+    
   return (
     <div className="flex flex-col w-full h-fit bg-[#f5f5f5]">
         <div className='relative h-96 w-full flex flex-col items-center '>
@@ -12,15 +27,19 @@ export default function User() {
                     </div>
                 </div>
                 <div className='w-full h-1/2 flex flex-row-reverse items-center bg-white rounded-t-lg border-x-2 border-t-2 border-[#efefef]'>
-                    <div>
-                        <button className='px-5 py-1 rounded-full bg-blue-200 mr-4 font-medium'>Edit</button>
-                    </div>
+                    {userInfo._id == ownerInfo._id ?
+                        <div>
+                            <button className='px-5 py-1 rounded-full bg-blue-200 mr-4 font-medium'>Edit</button>
+                        </div>
+                    :
+                        <></>
+                    }
                 </div>
             </div>
             <div className='absolute bottom-0 w-full md:max-w-[850px] xl:max-w-2/3  h-1/2 flex flex-col md:text-center bg-white rounded-b-lg mb-5 border-x-2 border-b-2 border-[#efefef]'>
-                <h1 className='relative flex md:justify-center ml-5 md:ml-0 font-bold text-xl md:text-xl lg:text-2xl'>Username</h1>
+                <h1 className='relative flex md:justify-center ml-5 md:ml-0 font-bold text-xl md:text-xl lg:text-2xl'>{userInfo.fullname}</h1>
                 <h1 className='relative flex justify-normal md:justify-center mt-2 md:mt-3 ml-5 md:ml-36 md:mr-36 text-sm md:text-base lg:text-lg'>
-                   A Front-end Developer who is interested in human-computer interactions, media arts, artificial intelligence and everything in between.
+                    {userInfo.description}
                 </h1>
                 <div className='relative mt-7 mb-3 flex md:justify-center gap-4'>
                     <div className='ml-5 md:ml-0 flex flex-row gap-2'>
@@ -29,7 +48,7 @@ export default function User() {
                     </div>
                     <div className='flex flex-row gap-2'>
                         <p className='pi pi-at text-sm md:text-base'></p>
-                        <h1 className='text-sm md:text-base'>Joined on Oct 14, 2023</h1>
+                        <h1 className='text-sm md:text-base'>Joined on </h1>
                     </div>
                 </div>
             </div>
@@ -47,7 +66,7 @@ export default function User() {
                         </div>
                         <div className='p-3 items-center'>
                             <p className='pi pi-mobile mr-2'/>
-                            0905123456  
+                            {userInfo.phoneNumber}  
                         </div>
                         <div className='p-3 items-center'>
                             <p className='pi pi-star mr-2'/>

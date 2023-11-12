@@ -11,6 +11,19 @@ const userRouter = new Elysia().get(
     }
     return await userCtrl.getUserByUserId({ set, userId });
   }
-);
+  )
+  .post(
+    "/user",
+    async ({  set, body, userCtrl }) => {      
+      return await userCtrl.getUserInfoByUserId({ set, body });
+    },
+    {
+      schema: {
+        body: t.Object({
+          _id: t.String(),
+        }),
+      },
+    }
+  );
 
 export default userRouter;

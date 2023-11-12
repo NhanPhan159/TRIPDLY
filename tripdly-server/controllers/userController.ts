@@ -17,4 +17,20 @@ export default class UserController {
       return { message: "Server failed" };
     }
   }
+  async getUserInfoByUserId({ set, body}) {
+    try {      
+      const data = await User.findById(body._id).select("-password");
+
+      if (!data) {        
+        set.status = 400;
+        return { message: "Bad request!" };
+      }
+      
+      set.status = 200;
+      return data;
+    } catch (error) {
+      set.status = 500;
+      return { message: "Server failed" };
+    }
+  }
 }
