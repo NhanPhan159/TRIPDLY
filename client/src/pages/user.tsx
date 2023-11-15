@@ -13,8 +13,10 @@ export const userLoader = async (_id) => {
 
 export default function User() {
     const userInfo = useLoaderData()
-    const ownerInfo = useAuthStore(state=>state.userInfo)
-    console.log("ownerinfo",ownerInfo);
+    console.log(userInfo);
+    
+    // const ownerInfo = useAuthStore(state=>state.userInfo)
+    // console.log("ownerinfo",ownerInfo);
     
   return (
     <div className="flex flex-col w-full h-fit bg-[#f5f5f5]">
@@ -27,13 +29,13 @@ export default function User() {
                     </div>
                 </div>
                 <div className='w-full h-1/2 flex flex-row-reverse items-center bg-white rounded-t-lg border-x-2 border-t-2 border-[#efefef]'>
-                    {userInfo._id == ownerInfo._id ?
+                    {/* {userInfo._id == ownerInfo._id ?
                         <div>
                             <button className='px-5 py-1 rounded-full bg-blue-200 mr-4 font-medium'>Edit</button>
                         </div>
                     :
                         <></>
-                    }
+                    } */}
                 </div>
             </div>
             <div className='absolute bottom-0 w-full md:max-w-[850px] xl:max-w-2/3  h-1/2 flex flex-col md:text-center bg-white rounded-b-lg mb-5 border-x-2 border-b-2 border-[#efefef]'>
@@ -48,7 +50,7 @@ export default function User() {
                     </div>
                     <div className='flex flex-row gap-2'>
                         <p className='pi pi-at text-sm md:text-base'></p>
-                        <h1 className='text-sm md:text-base'>Joined on </h1>
+                        <h1 className='text-sm md:text-base'>Joined on {userInfo.createdAt.slice(0,10)}</h1>
                     </div>
                 </div>
             </div>

@@ -33,7 +33,7 @@ const app = new Elysia()
     })
   )
   .use(cookie())
-  .use(cors())
+  .use(cors({credentials:true,origin:"http://localhost:5173",allowedHeaders:"Content-Type"}))
   .use(swagger())
 
   // =======controllers=======

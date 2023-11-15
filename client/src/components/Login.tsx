@@ -20,6 +20,8 @@ export default function Login({setSignup}) {
     axios
       .post("http://localhost:8888/sign-in", {
         username,password
+      },{
+        withCredentials : true
       })
       .then((response) => {
         userInfo = response.data.data
